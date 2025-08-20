@@ -1,0 +1,27 @@
+name: Instagram Auto Post
+
+on:
+  schedule:
+    - cron: '*/5 * * * *' # تجربة كل 5 دقايق
+  workflow_dispatch: # لتشغيل يدوي متاح
+
+jobs:
+  post-to-instagram:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Install dependencies
+        run: pip install instabot
+
+      - name: Run Instagram Bot
+        env:
+          IG_USERNAME: ${{ secrets.IG_USERNAME }}
+          IG_PASSWORD: ${{ secrets.IG_PASSWORD }}
+        run: python post.py
