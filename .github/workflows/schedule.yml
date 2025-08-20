@@ -1,9 +1,9 @@
-name: Instagram Auto Post
+name: Instagram Auto Post - Daily
 
 on:
   schedule:
-    - cron: '*/5 * * * *' # تجربة كل 5 دقايق
-  workflow_dispatch: # لتشغيل يدوي متاح
+    - cron: '0 20 * * *' # كل يوم الساعة 10 مساءً بتوقيت مصر
+  workflow_dispatch: # تشغيل يدوي متاح
 
 jobs:
   post-to-instagram:
